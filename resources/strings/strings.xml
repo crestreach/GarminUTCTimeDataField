@@ -1,0 +1,12 @@
+<strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <string id="AppName">UTCTime Data Field</string>
+    <string id="AppNameTest">UTCTime Data Field Test</string>
+    <string id="AppDeveloper">CrestReach</string>
+
+    <string id="label">UTC</string>
+    
+    <string id="displaySecsTitle">Display seconds</string>
+    <string id="displaySecsPrompt">Display seconds</string>
+    <string id="displaySecsError">Wrong value</string>
+
+</strings>
