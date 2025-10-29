@@ -7,4 +7,4 @@ UTCTime Data Field displayes current time in the UTC time zone, providing a quic
 - added support for new devices
 
 1.0.2:
-- added extra initializations, checks, module specifications, as well as type validation to avoid potential crashes on some devides and versions
+- added extra initializations, checks, module specifications, as well as type validation in code to avoid potential crashes on some devices and versions
