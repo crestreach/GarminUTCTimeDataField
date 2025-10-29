@@ -8,16 +8,18 @@ import Toybox.Application.Properties;
 class UTCTimeDataFieldView extends WatchUi.SimpleDataField {
 
     var displaySecs as Boolean = true;
-    var lastPropsReloadTime;
+    var lastPropsReloadTime as Time.Moment = Time.now();
+    var initialized as Boolean = false;
 
     function initialize() {
         SimpleDataField.initialize();
         loadProps();
-        label = loadResource(Rez.Strings.label);
+        label = WatchUi.loadResource(Rez.Strings.label);
+        initialized = true;
     }
 
     function compute(info) {
-        if (lastPropsReloadTime.add(new Time.Duration(10)).compare(Time.now()) < 0) {
+        if (!initialized || lastPropsReloadTime.add(new Time.Duration(10)).compare(Time.now()) < 0) {
             // refresh properties every 10 seconds
             loadProps();
         }
@@ -25,10 +27,10 @@ class UTCTimeDataFieldView extends WatchUi.SimpleDataField {
         var moment = Time.now();
         var utcInfo = Gregorian.utcInfo(moment, Time.FORMAT_SHORT);
 
-		// Format the time
-		var hours = utcInfo.hour.format("%02d");
-		var mins  = utcInfo.min.format("%02d");
-		var timeText = hours + ":" + mins;
+        // Format the time
+        var hours = utcInfo.hour.format("%02d");
+        var mins  = utcInfo.min.format("%02d");
+        var timeText = hours + ":" + mins;
         if (displaySecs) {
             var secs  = utcInfo.sec.format("%02d");
             timeText = timeText + ":" + secs;
@@ -38,7 +40,12 @@ class UTCTimeDataFieldView extends WatchUi.SimpleDataField {
     }
 
     private function loadProps() as Void {
-        displaySecs = Properties.getValue("displaySecs");
+        var displaySecsValue = Properties.getValue("displaySecs");
+        if (displaySecsValue != null && displaySecsValue instanceof Boolean) {
+            displaySecs = displaySecsValue as Boolean;
+        } else {
+            displaySecs = true;
+        }
 
         lastPropsReloadTime = Time.now();
     }
