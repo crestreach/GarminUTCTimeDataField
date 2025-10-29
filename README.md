@@ -4,3 +4,9 @@ The data field displays current time in the UTC time zone.
 Garmin devices don't have the possibility of manual time zone selection, and while the time zone defined by the current location is sufficient in many cases, there are occasions when displaying the time in UTC time zone might be desired. For example, while sailing offshore, the time zones change, and it is impossible to determine in which time zone the time is currently displayed. UTC is always clear and independent of the location.
 There are numerous watch faces which can display time in a desired time zone, or UTC, and Alt. Time Zones can be used to display the time in various time zones, but there is no built-in data field that could display time in the UTC time zone.
 UTCTime Data Field displayes current time in the UTC time zone, providing a quick and reliable time reading on the activity screen.
+
+1.0.1:
+- added support for new devices
+
+1.0.2:
+- added extra initializations, checks, module specifications, as well as type validation in code to avoid potential crashes on some devices and versions
